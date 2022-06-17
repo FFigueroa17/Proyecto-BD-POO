@@ -122,7 +122,7 @@ namespace FormPrincipal
             this.lblFechHorInicioEven.Name = "lblFechHorInicioEven";
             this.lblFechHorInicioEven.Size = new System.Drawing.Size(324, 22);
             this.lblFechHorInicioEven.TabIndex = 37;
-            this.lblFechHorInicioEven.Text = "Fecha y hora de inicio";
+            this.lblFechHorInicioEven.Text = "Fecha y hora de inicio YYYY-MM-DD";
             // 
             // lblasistenciasEvento
             // 
@@ -140,7 +140,7 @@ namespace FormPrincipal
             this.lblFechHorFin.Name = "lblFechHorFin";
             this.lblFechHorFin.Size = new System.Drawing.Size(324, 22);
             this.lblFechHorFin.TabIndex = 39;
-            this.lblFechHorFin.Text = "Fecha y hora de fin";
+            this.lblFechHorFin.Text = "Fecha y hora de fin YYYY-MM-DD";
             // 
             // btnAgregarEvento
             // 
@@ -156,6 +156,7 @@ namespace FormPrincipal
             this.btnAgregarEvento.TabIndex = 40;
             this.btnAgregarEvento.Text = "Agregar";
             this.btnAgregarEvento.UseVisualStyleBackColor = false;
+            this.btnAgregarEvento.Click += new System.EventHandler(this.btnAgregarEvento_Click);
             // 
             // btnActualizarEvento
             // 
@@ -285,6 +286,7 @@ namespace FormPrincipal
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Eventos";
             this.Text = "Eventos";
+            this.Load += new System.EventHandler(this.Eventos_Load);
             ((System.ComponentModel.ISupportInitialize) (this.dgvEventos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

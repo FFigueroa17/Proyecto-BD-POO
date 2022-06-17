@@ -42,7 +42,7 @@ namespace FormPrincipal
                     connection.Close();
                 }
                 return lista;
-            }
+        }
         
         public static void CrearNuevo(Evento eve)
         {
@@ -50,7 +50,7 @@ namespace FormPrincipal
 
             using (SqlConnection connection = new SqlConnection(cadena)){
                 string query = "INSERT INTO EVENTO (titulo, imagen, fecha_hora_inicio, cantidad_asistencias, fecha_hora_fin, id_area) " + 
-                               "VALUES(@titulo, @imagen, @fecha_hora_inicio, @cantidad_asistencias, @fecha_hora_fin, @id_area)";
+                               "VALUES(@titulo, @imagen, @fecha_hora_inicio, @cantidad_asistencias, @fecha_hora_fin, DATETIME, @id_area)";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@titulo", eve.titulo);
                 command.Parameters.AddWithValue("@imagen", eve.imagen); 
@@ -111,5 +111,48 @@ namespace FormPrincipal
             } 
             return exito;
         } */
+        
+        public static List<Evento> ObtenerCombobox(){
+                string cadena = Resources.cadena_conexion;
+                List<Evento> lista = new List<Evento>();
+
+                using (SqlConnection connection = new SqlConnection(cadena)){
+                    string query = 
+                        "SELECT id_area, nombre " +
+                        "FROM AREA " +
+                            "WHERE (id_area BETWEEN 3 AND 6) OR "  +
+                                "(id_area BETWEEN 19 AND 26)";
+                    SqlCommand command = new SqlCommand(query, connection);
+                
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader()){
+                        while (reader.Read())
+                        {
+                            Evento eve = new Evento();
+                            eve.idareaeve = Convert.ToInt32(reader["id_area"].ToString());
+                            eve.areaevento = reader["nombre"].ToString();
+                            lista.Add(eve);
+                        }   
+                    }
+                    connection.Close();
+                }
+                return lista;
+        }
+
+        public static bool VerificarDisponibilidadFechas()
+        {
+            bool verify = true;
+
+            try
+            {
+                //awa
+            }
+            catch (Exception e)
+            {
+                verify = false;
+            }
+            
+            return verify;
+        }
     }
 }
