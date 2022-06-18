@@ -60,8 +60,7 @@ namespace FormPrincipal
                 command.Parameters.AddWithValue("@cantidad_asistencias", eve.asistencias);
                 command.Parameters.AddWithValue("@fecha_hora_fin", eve.fechFin);
                 command.Parameters.AddWithValue("@id_area", eve.idareaeve);
-                //falta agregar el objetivo a su tabla
-                
+
                 connection.Open();
                 command.ExecuteNonQuery();
                 connection.Close();
@@ -202,7 +201,6 @@ namespace FormPrincipal
             {
                 foreach (var evento in lista)//NO ENTRA AQUI, POR?
                 {
-                    MessageBox.Show("entra for each ", "a", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     if ((DateTime.Compare(fechini, evento.fechFin) > 0 
                          && DateTime.Compare(fechfin, evento.fechInicio) < 0) && idarea == evento.idareaeve)
                     {
@@ -229,12 +227,22 @@ namespace FormPrincipal
                             }
                             else
                             {
-                                todos1 = false;
-                                todos2 = false;
-                                alguna = false;
+                                MessageBox.Show("no entra a ningun if", "a", MessageBoxButtons.OK,
+                                    MessageBoxIcon.Asterisk);
+                                if (idarea != evento.idareaeve)
+                                {
+                                    verify = true;
+                                }
+                                else
+                                {
+                                    todos1 = false;
+                                    todos2 = false;
+                                    alguna = false;   
+                                }
                             }
                         }
                     }
+                    //contador
                 }
             }
             catch (Exception e)
@@ -256,8 +264,7 @@ namespace FormPrincipal
         public static List<Evento> ObtenerFechas(){
                 string cadena = Resources.cadena_conexion;
                 List<Evento> lista = new List<Evento>();
-
-                MessageBox.Show("entra antes de la conexion", "a", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                
                 using (SqlConnection connection = new SqlConnection(cadena)){
                     string query =
                         "SELECT fecha_hora_inicio, fecha_hora_fin, AREA.id_area " +
@@ -280,7 +287,7 @@ namespace FormPrincipal
                     connection.Close();
                 }
                 
-                return lista;
+                return lista;//envia bien la lista en orden
         }
     }
 }
