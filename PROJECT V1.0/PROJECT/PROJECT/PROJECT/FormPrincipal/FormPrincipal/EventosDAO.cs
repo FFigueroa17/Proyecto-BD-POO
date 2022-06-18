@@ -9,9 +9,9 @@ namespace FormPrincipal
 {
     public class EventosDAO
     {
-        public static List<Evento> ObtenerTodos(){
+        public static List<Evento2> ObtenerTodos(){//era tipo Evento
                 string cadena = Resources.cadena_conexion;
-                List<Evento> lista = new List<Evento>();
+                List<Evento2> lista = new List<Evento2>();
 
                 using (SqlConnection connection = new SqlConnection(cadena)){
                     string query = 
@@ -29,15 +29,15 @@ namespace FormPrincipal
                     using (SqlDataReader reader = command.ExecuteReader()){
                         while (reader.Read())
                         {
-                            Evento eve = new Evento();
-                            eve.IDEvento = Convert.ToInt32(reader["id_evento"].ToString());
+                            Evento2 eve = new Evento2(); //Evento eve = new Evento();
+                            eve.IdEvento = Convert.ToInt32(reader["id_evento"].ToString());
                             eve.titulo = reader["titulo"].ToString();
                             eve.objetivo = reader["objetivo"].ToString();
                             eve.imagen = reader["imagen"].ToString();
                             eve.fechaIni = reader["fecha_hora_inicio"].ToString();
                             eve.fechaFin = reader["fecha_hora_fin"].ToString();
                             eve.asistencias = Convert.ToInt32(reader["cantidad_asistencias"].ToString());
-                            eve.areaevento = reader["nombre"].ToString();
+                            eve.areaEvento = reader["nombre"].ToString();
                             lista.Add(eve);
                         }   
                     }

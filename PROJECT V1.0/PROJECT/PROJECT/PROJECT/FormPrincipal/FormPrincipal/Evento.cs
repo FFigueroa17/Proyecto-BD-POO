@@ -4,6 +4,7 @@ namespace FormPrincipal
 {
     public class Evento
     {
+        //OBJETO USADO PARA MANEJAR DATOS
         public int IDEvento { get; set; }
         public string titulo { get; set; }
         public string objetivo { get; set; }
