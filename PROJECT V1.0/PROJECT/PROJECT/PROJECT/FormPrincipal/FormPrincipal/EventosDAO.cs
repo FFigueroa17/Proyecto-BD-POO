@@ -9,6 +9,7 @@ namespace FormPrincipal
 {
     public class EventosDAO
     {
+        //--------FUNCION PARA MOSTRAR LOS DATOS DE LA TABLA EVENTO CON SU OBJETIVO-----------------------------
         public static List<Evento2> ObtenerTodos(){//era tipo Evento
                 string cadena = Resources.cadena_conexion;
                 List<Evento2> lista = new List<Evento2>();
@@ -46,6 +47,7 @@ namespace FormPrincipal
                 return lista;
         }
         
+        //--------FUNCION PARA AGREGAR NUEVO EVENTO----------------------------------------------------------------
         public static void CrearNuevo(Evento eve)
         {
             string cadena = Resources.cadena_conexion;
@@ -69,6 +71,7 @@ namespace FormPrincipal
             }
         }
         
+        //-------FUNCION AGREGAR DATO EN LA TABLA OBJETIVO------------------------------------------
         public static void AgregarObjetivo(Objetivo obj)
         {
             string cadena = Resources.cadena_conexion;
@@ -86,6 +89,7 @@ namespace FormPrincipal
             }
         }
 
+        //------FUNCION Q OBTIENE POR MEDIO DE UNA CONSULTA, EL ULTIMO ID_EVENTO INGRESADO EN LA TABLA EVENTO---------
         public static int ObtenerIdEventoAgregado()
         {
             int aidi = 0;
@@ -116,6 +120,7 @@ namespace FormPrincipal
             return aidi;
         }
             
+        //------FUNCION PARA ELIMINAR EN BASE AL ID INGRESADO/RECIBIDO------------------------
         public static bool EliminarPorID(int ID) 
         { 
             bool exito = true; 
@@ -136,32 +141,70 @@ namespace FormPrincipal
             } 
             return exito;
         } 
-        /*    
-        public static bool ActualizarPorID(Coleccion col) { 
+        
+        //---------FUNCION PARA ACTUALIZAR INFO EN FILA/EVENTO EXISTENTE---------------------------------
+        public static bool ActualizarPorID(Evento eve) { 
             bool exito = true; 
             try { 
                 string cadena = Resources.cadena_conexion; 
                 using (SqlConnection connection = new SqlConnection(cadena)){ 
-                    string query = "UPDATE COLECCION SET nombre = @nuevonombre, id_genero = @nuevoid_genero, id_tipo = @nuevoid_tipo, numero_de_piso= @nuevonumero_de_piso WHERE id_coleccion = @id"; 
+                    string query = 
+                        "UPDATE EVENTO " +
+                        "SET titulo = @newtitle, imagen = @newimage, fecha_hora_inicio = @newIni, cantidad_asistencias= @newasis, " +
+                        "fecha_hora_fin = @newEnd, id_area = @idareaeven " +
+                        "WHERE id_evento = @id"; 
                     SqlCommand command = new SqlCommand(query, connection);
                     
-                    command.Parameters.AddWithValue("@id", col.IDcoleccion); 
-                    command.Parameters.AddWithValue("@nuevonombre", col.Nombre); 
-                    command.Parameters.AddWithValue("@nuevoid_genero", col.IDgenero); 
-                    command.Parameters.AddWithValue("@nuevoid_tipo", col.IDtipo); 
-                    command.Parameters.AddWithValue("@nuevonumero_de_piso", col.numeroPiso);
+                    command.Parameters.AddWithValue("@id", eve.IDEvento); 
+                    command.Parameters.AddWithValue("@newtitle", eve.titulo); 
+                    command.Parameters.AddWithValue("@newimage", eve.imagen); 
+                    command.Parameters.AddWithValue("@newIni", eve.fechInicio); 
+                    command.Parameters.AddWithValue("@newasis", eve.asistencias);
+                    command.Parameters.AddWithValue("@newEnd", eve.fechFin);
+                    command.Parameters.AddWithValue("@idareaeven", eve.idareaeve);
                     
                     connection.Open(); 
                     command.ExecuteNonQuery(); 
                     connection.Close();
+                    
+                    Objetivo obj = new Objetivo(eve.objetivo, eve.IDEvento);
+                    ActualizarOBJPorID(obj);
                 }
             }
             catch (Exception e) { 
                 exito = false;
             } 
             return exito;
-        } */
+        } 
         
+        //----ACTUALIZAR TABLA OBJETIVO-----------------
+        public static void ActualizarOBJPorID(Objetivo obj) { 
+            
+            try { 
+                string cadena = Resources.cadena_conexion; 
+                using (SqlConnection connection = new SqlConnection(cadena)){ 
+                    string query = 
+                        "UPDATE OBJETIVO " +
+                        "SET objetivo = @newobjetive " +
+                        "WHERE id_evento = @id"; 
+                    SqlCommand command = new SqlCommand(query, connection);
+                    
+                    command.Parameters.AddWithValue("@id", obj.idevento); 
+                    command.Parameters.AddWithValue("@newobjetive", obj.objetivo);
+                    
+                    connection.Open(); 
+                    command.ExecuteNonQuery(); 
+                    connection.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error al insertar objetivo");
+            } 
+            
+        } 
+        
+        //-----FUNCION PARA OBTENER DATOS DEL COMBO BOX EVENTO------------------------------
         public static List<Evento> ObtenerCombobox(){
                 string cadena = Resources.cadena_conexion;
                 List<Evento> lista = new List<Evento>();
@@ -189,6 +232,7 @@ namespace FormPrincipal
                 return lista;
         }
 
+        //-----------FUNCION PARA VERIFICAR EL RANGO DE FECHAS RESERVADAS DE LOS EVENTOS------------------------
         public static bool VerificarDisponibilidadFechas(Evento uwu)
         {
             bool verify = false, alguna = false, todos1 = true, todos2 = true;
@@ -272,6 +316,7 @@ namespace FormPrincipal
             return verify;
         }
         
+        //-----FUNCION PARA OBTENER LAS FECHAS RESERVADA DE EVENTOS EN ORDEN ASCENDENTE-------------------------
         public static List<Evento> ObtenerFechas(){
                 string cadena = Resources.cadena_conexion;
                 List<Evento> lista = new List<Evento>();
@@ -298,7 +343,7 @@ namespace FormPrincipal
                     connection.Close();
                 }
                 
-                return lista;//envia bien la lista en orden
+                return lista;
         }
     }
 }

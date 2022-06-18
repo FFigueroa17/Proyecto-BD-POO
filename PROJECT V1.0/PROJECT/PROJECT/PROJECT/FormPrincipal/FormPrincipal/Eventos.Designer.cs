@@ -272,7 +272,7 @@ namespace FormPrincipal
             this.dtpInicio.ShowUpDown = true;
             this.dtpInicio.Size = new System.Drawing.Size(311, 22);
             this.dtpInicio.TabIndex = 53;
-            this.dtpInicio.Value = new System.DateTime(2022, 6, 18, 0, 0, 0, 0);
+            this.dtpInicio.Value = new System.DateTime(2022, 1, 1, 0, 0, 0, 0);
             // 
             // dtpFin
             // 
@@ -285,13 +285,13 @@ namespace FormPrincipal
             this.dtpFin.ShowUpDown = true;
             this.dtpFin.Size = new System.Drawing.Size(311, 22);
             this.dtpFin.TabIndex = 54;
-            this.dtpFin.Value = new System.DateTime(2022, 6, 17, 0, 0, 0, 0);
+            this.dtpFin.Value = new System.DateTime(2022, 1, 1, 0, 0, 0, 0);
             // 
             // Eventos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(939, 583);
             this.Controls.Add(this.dtpFin);
             this.Controls.Add(this.dtpInicio);
