@@ -42,7 +42,7 @@ namespace FormPrincipal
             Limpiarevent();*/
         }
 
-        public void Limpiarevent()
+        public void Limpiarevent()//agregar campos faltantes
         {
             txtAsistenciasEvento.Clear();
             txtTituloEvento.Clear();

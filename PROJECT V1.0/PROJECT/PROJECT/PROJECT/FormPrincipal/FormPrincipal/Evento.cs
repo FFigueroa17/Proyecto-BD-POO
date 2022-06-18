@@ -31,7 +31,7 @@ namespace FormPrincipal
             this.fechFin = new DateTime(2000, 1, 1, 1, 0, 0, 0);
         }
 
-        public Evento(int idevent, string title, string obj, string ini, string fin, int asis, string area, 
+        public Evento(int idevent, string title, string obj, string ini, string fin, int asis, string area,
             int idarea, string image, DateTime fini, DateTime ffin)
         {
             this.IDEvento = idevent;
@@ -45,6 +45,18 @@ namespace FormPrincipal
             this.imagen = image;
             this.fechInicio = fini;
             this.fechFin = ffin;
+        }
+
+        public Evento(int ideve, string title, string obje, string feini, string fefin, int asist, string area, string image)
+        {
+            this.IDEvento = ideve;
+            this.titulo = title;
+            this.objetivo = obje;
+            this.fechaIni = feini;
+            this.fechaFin = fefin;
+            this.asistencias = asist;
+            this.areaevento = area;
+            this.imagen = image;
         }
     }
 }

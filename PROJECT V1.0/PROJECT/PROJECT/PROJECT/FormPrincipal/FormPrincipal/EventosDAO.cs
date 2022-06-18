@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Security.AccessControl;
+using System.Windows.Forms;
 using FormPrincipal.Properties;
 
 namespace FormPrincipal
@@ -63,8 +65,56 @@ namespace FormPrincipal
                 connection.Open();
                 command.ExecuteNonQuery();
                 connection.Close();
-                    
+                Objetivo obje = new Objetivo(eve.objetivo,EventosDAO.ObtenerIdEventoAgregado());
+                AgregarObjetivo(obje);
             }
+        }
+        
+        public static void AgregarObjetivo(Objetivo obj)
+        {
+            string cadena = Resources.cadena_conexion;
+
+            using (SqlConnection connection = new SqlConnection(cadena)){
+                string query = "INSERT INTO OBJETIVO (objetivo, id_evento) " + 
+                               "VALUES(@objetivo, @id_evento)";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@objetivo", obj.objetivo);
+                command.Parameters.AddWithValue("@id_evento", obj.idevento);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+
+        public static int ObtenerIdEventoAgregado()
+        {
+            int aidi = 0;
+
+            string chain = Resources.cadena_conexion;
+
+            using (SqlConnection connection = new SqlConnection(chain))
+            {
+                string query2 = 
+                    "SELECT id_evento " +
+                    "FROM EVENTO " + 
+                    "WHERE EVENTO.id_evento = IDENT_CURRENT('EVENTO')";
+
+                SqlCommand command2 = new SqlCommand(query2, connection);
+                
+                connection.Open();
+                using (SqlDataReader reader = command2.ExecuteReader()){
+                    while (reader.Read())
+                    {
+                        Evento eve = new Evento();
+                        eve.IDEvento = Convert.ToInt32(reader["id_evento"].ToString());
+                        aidi = eve.IDEvento;
+                    }   
+                }
+                connection.Close();
+            }
+
+            return aidi;
         }
             
         /*public static bool EliminarPorID(int ID) 
@@ -142,7 +192,7 @@ namespace FormPrincipal
 
         public static bool VerificarDisponibilidadFechas(Evento uwu)
         {
-            bool verify = true, alguna = false, todos1 = true, todos2 = true;
+            bool verify = false, alguna = false, todos1 = true, todos2 = true;
             DateTime fechini = Convert.ToDateTime(uwu.fechInicio);
             DateTime fechfin = Convert.ToDateTime(uwu.fechFin);
             int idarea = uwu.idareaeve;
@@ -153,6 +203,7 @@ namespace FormPrincipal
                 {
                     if ((fechini > evento.fechFin && fechfin < evento.fechInicio) && idarea == evento.idareaeve)
                     {
+                        MessageBox.Show("entra primr cond", "a", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         alguna = true;
                         todos1 = false;
                         todos2 = false;
@@ -161,12 +212,14 @@ namespace FormPrincipal
                     {
                         if ((fechini < evento.fechFin && fechini < evento.fechInicio) && idarea == evento.idareaeve)//todos1
                         {
+                            MessageBox.Show("entra segunda cond", "a", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                             todos2 = false;
                         }
                         else
                         {
                             if ((fechini > evento.fechFin && fechfin > evento.fechInicio) && idarea == evento.idareaeve)//todos2
                             {
+                                MessageBox.Show("entra a tercera", "a", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                                 todos1 = false;
                             }
                             else
@@ -187,7 +240,7 @@ namespace FormPrincipal
             if (alguna)
             {
                 verify = true;
-            }else if (todos1 || todos2)
+            }else if (todos1 || todos2)//entra de una vez aqui, ver por q 
             {
                 verify = true;
             }
