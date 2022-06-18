@@ -1,4 +1,6 @@
-﻿namespace FormPrincipal
+﻿using System;
+
+namespace FormPrincipal
 {
     public class Evento
     {
@@ -11,6 +13,8 @@
         public string areaevento { get; set; }
         public int idareaeve { get; set; }
         public string imagen { get; set; }
+        public DateTime fechInicio { get; set; }
+        public DateTime fechFin { get; set; }
 
         public Evento()
         {
@@ -23,9 +27,12 @@
             this.areaevento = "";
             this.idareaeve = 0;
             this.imagen = "";
+            this.fechInicio = new DateTime(2000, 1, 1, 1, 0, 0, 0);
+            this.fechFin = new DateTime(2000, 1, 1, 1, 0, 0, 0);
         }
 
-        public Evento(int idevent, string title, string obj, string ini, string fin, int asis, string area, int idarea, string image)
+        public Evento(int idevent, string title, string obj, string ini, string fin, int asis, string area, 
+            int idarea, string image, DateTime fini, DateTime ffin)
         {
             this.IDEvento = idevent;
             this.titulo = title;
@@ -36,6 +43,8 @@
             this.areaevento = area;
             this.idareaeve = idarea;
             this.imagen = image;
+            this.fechInicio = fini;
+            this.fechFin = ffin;
         }
     }
 }

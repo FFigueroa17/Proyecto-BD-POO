@@ -51,6 +51,8 @@ namespace FormPrincipal
             this.lblIDElimiEditEvento = new System.Windows.Forms.Label();
             this.txtIDElimEditEvento = new System.Windows.Forms.TextBox();
             this.txtImagenEvento = new System.Windows.Forms.TextBox();
+            this.txtObjetivo = new System.Windows.Forms.TextBox();
+            this.lblObjetivo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize) (this.dgvEventos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -149,7 +151,7 @@ namespace FormPrincipal
             this.btnAgregarEvento.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAgregarEvento.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.btnAgregarEvento.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnAgregarEvento.Location = new System.Drawing.Point(39, 431);
+            this.btnAgregarEvento.Location = new System.Drawing.Point(39, 456);
             this.btnAgregarEvento.Margin = new System.Windows.Forms.Padding(4);
             this.btnAgregarEvento.Name = "btnAgregarEvento";
             this.btnAgregarEvento.Size = new System.Drawing.Size(180, 37);
@@ -165,7 +167,7 @@ namespace FormPrincipal
             this.btnActualizarEvento.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnActualizarEvento.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.btnActualizarEvento.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnActualizarEvento.Location = new System.Drawing.Point(302, 431);
+            this.btnActualizarEvento.Location = new System.Drawing.Point(302, 456);
             this.btnActualizarEvento.Margin = new System.Windows.Forms.Padding(4);
             this.btnActualizarEvento.Name = "btnActualizarEvento";
             this.btnActualizarEvento.Size = new System.Drawing.Size(180, 37);
@@ -181,7 +183,7 @@ namespace FormPrincipal
             this.btnEliminarEvento.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEliminarEvento.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.btnEliminarEvento.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnEliminarEvento.Location = new System.Drawing.Point(39, 486);
+            this.btnEliminarEvento.Location = new System.Drawing.Point(39, 511);
             this.btnEliminarEvento.Margin = new System.Windows.Forms.Padding(4);
             this.btnEliminarEvento.Name = "btnEliminarEvento";
             this.btnEliminarEvento.Size = new System.Drawing.Size(180, 37);
@@ -196,7 +198,7 @@ namespace FormPrincipal
             this.btnMostrarEvento.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnMostrarEvento.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.btnMostrarEvento.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnMostrarEvento.Location = new System.Drawing.Point(302, 486);
+            this.btnMostrarEvento.Location = new System.Drawing.Point(302, 511);
             this.btnMostrarEvento.Margin = new System.Windows.Forms.Padding(4);
             this.btnMostrarEvento.Name = "btnMostrarEvento";
             this.btnMostrarEvento.Size = new System.Drawing.Size(180, 37);
@@ -233,19 +235,19 @@ namespace FormPrincipal
             // 
             // lblIDElimiEditEvento
             // 
-            this.lblIDElimiEditEvento.Location = new System.Drawing.Point(552, 471);
+            this.lblIDElimiEditEvento.Location = new System.Drawing.Point(69, 397);
             this.lblIDElimiEditEvento.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblIDElimiEditEvento.Name = "lblIDElimiEditEvento";
-            this.lblIDElimiEditEvento.Size = new System.Drawing.Size(324, 22);
+            this.lblIDElimiEditEvento.Size = new System.Drawing.Size(196, 22);
             this.lblIDElimiEditEvento.TabIndex = 48;
             this.lblIDElimiEditEvento.Text = "ID evento (Eliminar o editar)";
             // 
             // txtIDElimEditEvento
             // 
-            this.txtIDElimEditEvento.Location = new System.Drawing.Point(551, 497);
+            this.txtIDElimEditEvento.Location = new System.Drawing.Point(255, 397);
             this.txtIDElimEditEvento.Margin = new System.Windows.Forms.Padding(4);
             this.txtIDElimEditEvento.Name = "txtIDElimEditEvento";
-            this.txtIDElimEditEvento.Size = new System.Drawing.Size(311, 22);
+            this.txtIDElimEditEvento.Size = new System.Drawing.Size(195, 22);
             this.txtIDElimEditEvento.TabIndex = 49;
             // 
             // txtImagenEvento
@@ -256,12 +258,32 @@ namespace FormPrincipal
             this.txtImagenEvento.Size = new System.Drawing.Size(311, 22);
             this.txtImagenEvento.TabIndex = 50;
             // 
+            // txtObjetivo
+            // 
+            this.txtObjetivo.Location = new System.Drawing.Point(551, 494);
+            this.txtObjetivo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtObjetivo.Multiline = true;
+            this.txtObjetivo.Name = "txtObjetivo";
+            this.txtObjetivo.Size = new System.Drawing.Size(311, 54);
+            this.txtObjetivo.TabIndex = 51;
+            // 
+            // lblObjetivo
+            // 
+            this.lblObjetivo.Location = new System.Drawing.Point(551, 471);
+            this.lblObjetivo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblObjetivo.Name = "lblObjetivo";
+            this.lblObjetivo.Size = new System.Drawing.Size(324, 22);
+            this.lblObjetivo.TabIndex = 52;
+            this.lblObjetivo.Text = "Objetivo";
+            // 
             // Eventos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(939, 583);
+            this.Controls.Add(this.lblObjetivo);
+            this.Controls.Add(this.txtObjetivo);
             this.Controls.Add(this.txtImagenEvento);
             this.Controls.Add(this.txtIDElimEditEvento);
             this.Controls.Add(this.lblIDElimiEditEvento);
@@ -291,6 +313,9 @@ namespace FormPrincipal
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.TextBox txtObjetivo;
+        private System.Windows.Forms.Label lblObjetivo;
 
         private System.Windows.Forms.TextBox txtImagenEvento;
 

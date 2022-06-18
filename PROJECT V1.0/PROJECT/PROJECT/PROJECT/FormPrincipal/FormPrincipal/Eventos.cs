@@ -61,7 +61,7 @@ namespace FormPrincipal
         private void btnAgregarEvento_Click(object sender, EventArgs e)
         {
             if (txtTituloEvento.Text.Length > 0 && txtFechHorFinEvento.Text.Length > 0 && txtFechHorIniEvento.Text.Length > 0 
-                && txtAsistenciasEvento.Text.Length > 0 && txtImagenEvento.Text.Length > 0)
+                && txtAsistenciasEvento.Text.Length > 0 && txtImagenEvento.Text.Length > 0 && txtObjetivo.Text.Length > 0)
             {
                 Evento eve = new Evento();
                 eve.titulo = txtTituloEvento.Text;
@@ -69,22 +69,33 @@ namespace FormPrincipal
                 eve.fechaIni = txtFechHorIniEvento.Text;
                 eve.asistencias = Convert.ToInt32(txtAsistenciasEvento.Text);
                 eve.fechaFin = txtFechHorFinEvento.Text;
-                eve.idareaeve = Convert.ToInt32(cmbAreaEvento.SelectedValue);//error aqui
+                eve.idareaeve = Convert.ToInt32(cmbAreaEvento.SelectedValue);
+                eve.objetivo = txtObjetivo.Text;
                 
 
                 if ((eve.idareaeve == 3 && eve.asistencias <= 358) ||
                     ((eve.idareaeve >= 4 && eve.idareaeve <= 6) && eve.asistencias <= 200))//auditorio max: 358, proyecc max: 200
                 {
                     //VERIFICAR DISPONIBILIDAD
-                    EventosDAO.CrearNuevo(eve);
-                    MessageBox.Show("Nuevo evento agregado correctamente", "BINAES", MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
+                    if (EventosDAO.VerificarDisponibilidadFechas(eve))
+                    {
+                        EventosDAO.CrearNuevo(eve);
+                        MessageBox.Show("Nuevo evento agregado correctamente.", "BINAES", MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+                    }else
+                        MessageBox.Show("Verificar fechas disponibles.", "BINAES", MessageBoxButtons.OK,
+                            MessageBoxIcon.Exclamation);
                 }else if (eve.idareaeve >= 19 && eve.idareaeve <= 26)//id de biblio del 19 al 26, solo se permiten eventos en biblio, auditorio y sala de proyeccion
                 {
                     //VERIFICAR DISPONIBILIDAD
-                    EventosDAO.CrearNuevo(eve);
-                    MessageBox.Show("Nuevo evento agregado correctamente", "BINAES", MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
+                    if (EventosDAO.VerificarDisponibilidadFechas(eve))
+                    {
+                        EventosDAO.CrearNuevo(eve);
+                        MessageBox.Show("Nuevo evento agregado correctamente.", "BINAES", MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+                    }else
+                        MessageBox.Show("Verificar fechas disponibles.", "BINAES", MessageBoxButtons.OK,
+                            MessageBoxIcon.Exclamation);
                 }
                 else
                 {
@@ -95,7 +106,7 @@ namespace FormPrincipal
             }
             else
             {
-                MessageBox.Show("Debe llenar todos los campos", "Error", MessageBoxButtons.OK, 
+                MessageBox.Show("Debe llenar todos los campos.", "Error", MessageBoxButtons.OK, 
                     MessageBoxIcon.Error);
             }
             
@@ -103,7 +114,8 @@ namespace FormPrincipal
             dgvEventos.DataSource = null;
             dgvEventos.DataSource = EventosDAO.ObtenerTodos();
         }
-
+        
+        //CARGAR COMBO BOX AL CARGAR FORMULARIO
         private void Eventos_Load(object sender, EventArgs e)
         {
             //AGREGAR VALORES AL COMBO BOX

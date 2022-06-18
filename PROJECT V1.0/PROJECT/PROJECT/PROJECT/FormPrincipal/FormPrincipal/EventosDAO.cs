@@ -50,7 +50,7 @@ namespace FormPrincipal
 
             using (SqlConnection connection = new SqlConnection(cadena)){
                 string query = "INSERT INTO EVENTO (titulo, imagen, fecha_hora_inicio, cantidad_asistencias, fecha_hora_fin, id_area) " + 
-                               "VALUES(@titulo, @imagen, @fecha_hora_inicio, @cantidad_asistencias, @fecha_hora_fin, DATETIME, @id_area)";
+                               "VALUES(@titulo, @imagen, @fecha_hora_inicio, @cantidad_asistencias, @fecha_hora_fin, @id_area)";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@titulo", eve.titulo);
                 command.Parameters.AddWithValue("@imagen", eve.imagen); 
@@ -58,6 +58,7 @@ namespace FormPrincipal
                 command.Parameters.AddWithValue("@cantidad_asistencias", eve.asistencias);
                 command.Parameters.AddWithValue("@fecha_hora_fin", eve.fechaFin);
                 command.Parameters.AddWithValue("@id_area", eve.idareaeve);
+                //falta agregar el objetivo a su tabla
                 
                 connection.Open();
                 command.ExecuteNonQuery();
@@ -139,20 +140,87 @@ namespace FormPrincipal
                 return lista;
         }
 
-        public static bool VerificarDisponibilidadFechas()
+        public static bool VerificarDisponibilidadFechas(Evento uwu)
         {
-            bool verify = true;
+            bool verify = true, alguna = false, todos1 = true, todos2 = true;
+            DateTime fechini = Convert.ToDateTime(uwu.fechInicio);
+            DateTime fechfin = Convert.ToDateTime(uwu.fechFin);
+            int idarea = uwu.idareaeve;
 
             try
             {
-                //awa
+                foreach (var evento in ObtenerFechas())
+                {
+                    if ((fechini > evento.fechFin && fechfin < evento.fechInicio) && idarea == evento.idareaeve)
+                    {
+                        alguna = true;
+                        todos1 = false;
+                        todos2 = false;
+                    }
+                    else
+                    {
+                        if ((fechini < evento.fechFin && fechini < evento.fechInicio) && idarea == evento.idareaeve)//todos1
+                        {
+                            todos2 = false;
+                        }
+                        else
+                        {
+                            if ((fechini > evento.fechFin && fechfin > evento.fechInicio) && idarea == evento.idareaeve)//todos2
+                            {
+                                todos1 = false;
+                            }
+                            else
+                            {
+                                todos1 = false;
+                                todos2 = false;
+                                alguna = false;
+                            }
+                        }
+                    }
+                }
             }
             catch (Exception e)
             {
                 verify = false;
             }
+
+            if (alguna)
+            {
+                verify = true;
+            }else if (todos1 || todos2)
+            {
+                verify = true;
+            }
             
             return verify;
+        }
+        
+        public static List<Evento> ObtenerFechas(){
+                string cadena = Resources.cadena_conexion;
+                List<Evento> lista = new List<Evento>();
+
+                using (SqlConnection connection = new SqlConnection(cadena)){
+                    string query =
+                        "SELECT fecha_hora_inicio, fecha_hora_fin, AREA.id_area" +
+                        "FROM EVENTO, AREA " +
+                        "WHERE EVENTO.id_area = AREA.id_area " +
+                        "ORDER BY fecha_hora_inicio ASC";
+                    SqlCommand command = new SqlCommand(query, connection);
+                
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader()){
+                        while (reader.Read())
+                        {
+                            Evento eve = new Evento();
+                            eve.idareaeve = Convert.ToInt32(reader["AREA.id_area"].ToString());
+                            eve.fechInicio = Convert.ToDateTime(reader["fecha_hora_inicio"].ToString());
+                            eve.fechFin = Convert.ToDateTime(reader["fecha_hora_fin"].ToString());
+                            lista.Add(eve);
+                        }   
+                    }
+                    connection.Close();
+                }
+                return lista;
         }
     }
 }
