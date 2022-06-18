@@ -192,6 +192,7 @@ namespace FormPrincipal
         public static bool VerificarDisponibilidadFechas(Evento uwu)
         {
             bool verify = false, alguna = false, todos1 = true, todos2 = true;
+            int contareasdif = 0, contsameareamay = 0, contsameareamin = 0, loops = 0;
             DateTime fechini = uwu.fechInicio;
             DateTime fechfin = uwu.fechFin;
             int idarea = uwu.idareaeve;
@@ -199,12 +200,11 @@ namespace FormPrincipal
 
             try
             {
-                foreach (var evento in lista)//NO ENTRA AQUI, POR?
+                foreach (var evento in lista)
                 {
                     if ((DateTime.Compare(fechini, evento.fechFin) > 0 
                          && DateTime.Compare(fechfin, evento.fechInicio) < 0) && idarea == evento.idareaeve)
                     {
-                        MessageBox.Show("entra primr cond", "a", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         alguna = true;
                         todos1 = false;
                         todos2 = false;
@@ -214,24 +214,22 @@ namespace FormPrincipal
                         if ((DateTime.Compare(fechini, evento.fechFin) < 0 
                              && DateTime.Compare(fechfin, evento.fechInicio) < 0) && idarea == evento.idareaeve)//todos1
                         {
-                            MessageBox.Show("entra segunda cond", "a", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                            todos2 = false;
+                            //todos2 = false;
+                            contsameareamin++;
                         }
                         else
                         {
                             if ((DateTime.Compare(fechini, evento.fechFin) > 0 
                                  && DateTime.Compare(fechfin, evento.fechInicio) > 0) && idarea == evento.idareaeve)//todos2
                             {
-                                MessageBox.Show("entra a tercera", "a", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                                todos1 = false;
+                                contsameareamay++;
+                                //todos1 = false;
                             }
                             else
                             {
-                                MessageBox.Show("no entra a ningun if", "a", MessageBoxButtons.OK,
-                                    MessageBoxIcon.Asterisk);
                                 if (idarea != evento.idareaeve)
                                 {
-                                    verify = true;
+                                    contareasdif++;
                                 }
                                 else
                                 {
@@ -243,6 +241,19 @@ namespace FormPrincipal
                         }
                     }
                     //contador
+                    loops++;//calcula la cantidad de datos/veces q se ha recorrido el bucle
+                }
+
+                loops = loops - contareasdif;//veces recorrido - veces q se comparo con un area diferente
+                if (loops == contsameareamin)
+                {
+                    todos2 = false;
+                }else if (loops == contsameareamay)
+                {
+                    todos1 = false;
+                }else if (loops == 0)
+                {
+                    verify = true;
                 }
             }
             catch (Exception e)
@@ -253,7 +264,7 @@ namespace FormPrincipal
             if (alguna)
             {
                 verify = true;
-            }else if (todos1 || todos2)//entra de una vez aqui, ver por q 
+            }else if (todos1 || todos2)
             {
                 verify = true;
             }
