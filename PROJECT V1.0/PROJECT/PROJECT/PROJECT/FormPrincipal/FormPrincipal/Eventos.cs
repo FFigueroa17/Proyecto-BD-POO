@@ -46,9 +46,9 @@ namespace FormPrincipal
         {
             txtAsistenciasEvento.Clear();
             txtTituloEvento.Clear();
-            txtFechHorFinEvento.Clear();
-            txtFechHorIniEvento.Clear();
             txtIDElimEditEvento.Clear();
+            txtObjetivo.Clear();
+            txtImagenEvento.Clear();
         }
 
 
@@ -60,15 +60,15 @@ namespace FormPrincipal
 
         private void btnAgregarEvento_Click(object sender, EventArgs e)
         {
-            if (txtTituloEvento.Text.Length > 0 && txtFechHorFinEvento.Text.Length > 0 && txtFechHorIniEvento.Text.Length > 0 
-                && txtAsistenciasEvento.Text.Length > 0 && txtImagenEvento.Text.Length > 0 && txtObjetivo.Text.Length > 0)
+            if (txtTituloEvento.Text.Length > 0 && txtAsistenciasEvento.Text.Length > 0 
+                                                && txtImagenEvento.Text.Length > 0 && txtObjetivo.Text.Length > 0)
             {
                 Evento eve = new Evento();
                 eve.titulo = txtTituloEvento.Text;
-                eve.imagen = txtImagenEvento.Text; 
-                eve.fechaIni = txtFechHorIniEvento.Text;
+                eve.imagen = txtImagenEvento.Text;
+                eve.fechInicio = dtpInicio.Value;//txtFechHorIniEvento.Text; fechaIni
                 eve.asistencias = Convert.ToInt32(txtAsistenciasEvento.Text);
-                eve.fechaFin = txtFechHorFinEvento.Text;
+                eve.fechFin = dtpFin.Value;//txtFechHorFinEvento.Text; fechaFin
                 eve.idareaeve = Convert.ToInt32(cmbAreaEvento.SelectedValue);
                 eve.objetivo = txtObjetivo.Text;
                 
@@ -135,6 +135,31 @@ namespace FormPrincipal
             this.cmbAreaEvento.DataSource = areas;
             this.cmbAreaEvento.DisplayMember = "Area";
             this.cmbAreaEvento.ValueMember = "ID";
+            
+        }
+
+        private void btnEliminarEvento_Click(object sender, EventArgs e)
+        {
+            if (txtIDElimEditEvento.Text.Length > 0)
+            {
+                int ID_a_borrar = Convert.ToInt32(txtIDElimEditEvento.Text);
+
+                if (EventosDAO.EliminarPorID(ID_a_borrar))
+                    MessageBox.Show("Coleccion eliminada correctamente", "BINAES", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                else
+                    MessageBox.Show("Ha ocurrido un error");
+            }
+            else
+            {
+                MessageBox.Show("Ingrese un ID de coleccion correcto", "Error", MessageBoxButtons.OK, 
+                    MessageBoxIcon.Error);
+            }
+            
+            dgvEventos.DataSource = null;
+            dgvEventos.DataSource = EventosDAO.ObtenerTodos();
+            
+            Limpiarevent();
         }
     }
 }

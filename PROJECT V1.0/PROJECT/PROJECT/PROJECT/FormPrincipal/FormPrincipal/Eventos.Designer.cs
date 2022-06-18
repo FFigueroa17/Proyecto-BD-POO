@@ -35,8 +35,6 @@ namespace FormPrincipal
             this.dgvEventos = new System.Windows.Forms.DataGridView();
             this.lblTituloEvento = new System.Windows.Forms.Label();
             this.txtTituloEvento = new System.Windows.Forms.TextBox();
-            this.txtFechHorIniEvento = new System.Windows.Forms.TextBox();
-            this.txtFechHorFinEvento = new System.Windows.Forms.TextBox();
             this.txtAsistenciasEvento = new System.Windows.Forms.TextBox();
             this.lblFechHorInicioEven = new System.Windows.Forms.Label();
             this.lblasistenciasEvento = new System.Windows.Forms.Label();
@@ -53,6 +51,8 @@ namespace FormPrincipal
             this.txtImagenEvento = new System.Windows.Forms.TextBox();
             this.txtObjetivo = new System.Windows.Forms.TextBox();
             this.lblObjetivo = new System.Windows.Forms.Label();
+            this.dtpInicio = new System.Windows.Forms.DateTimePicker();
+            this.dtpFin = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize) (this.dgvEventos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,22 +92,6 @@ namespace FormPrincipal
             this.txtTituloEvento.Name = "txtTituloEvento";
             this.txtTituloEvento.Size = new System.Drawing.Size(311, 22);
             this.txtTituloEvento.TabIndex = 33;
-            // 
-            // txtFechHorIniEvento
-            // 
-            this.txtFechHorIniEvento.Location = new System.Drawing.Point(552, 188);
-            this.txtFechHorIniEvento.Margin = new System.Windows.Forms.Padding(4);
-            this.txtFechHorIniEvento.Name = "txtFechHorIniEvento";
-            this.txtFechHorIniEvento.Size = new System.Drawing.Size(311, 22);
-            this.txtFechHorIniEvento.TabIndex = 34;
-            // 
-            // txtFechHorFinEvento
-            // 
-            this.txtFechHorFinEvento.Location = new System.Drawing.Point(552, 251);
-            this.txtFechHorFinEvento.Margin = new System.Windows.Forms.Padding(4);
-            this.txtFechHorFinEvento.Name = "txtFechHorFinEvento";
-            this.txtFechHorFinEvento.Size = new System.Drawing.Size(311, 22);
-            this.txtFechHorFinEvento.TabIndex = 35;
             // 
             // txtAsistenciasEvento
             // 
@@ -190,6 +174,7 @@ namespace FormPrincipal
             this.btnEliminarEvento.TabIndex = 42;
             this.btnEliminarEvento.Text = "Eliminar";
             this.btnEliminarEvento.UseVisualStyleBackColor = false;
+            this.btnEliminarEvento.Click += new System.EventHandler(this.btnEliminarEvento_Click);
             // 
             // btnMostrarEvento
             // 
@@ -276,12 +261,40 @@ namespace FormPrincipal
             this.lblObjetivo.TabIndex = 52;
             this.lblObjetivo.Text = "Objetivo";
             // 
+            // dtpInicio
+            // 
+            this.dtpInicio.CustomFormat = "MMMM-dd-yyyy hh:mm:ss";
+            this.dtpInicio.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpInicio.Location = new System.Drawing.Point(551, 187);
+            this.dtpInicio.MaxDate = new System.DateTime(2030, 12, 31, 0, 0, 0, 0);
+            this.dtpInicio.MinDate = new System.DateTime(2019, 12, 31, 0, 0, 0, 0);
+            this.dtpInicio.Name = "dtpInicio";
+            this.dtpInicio.ShowUpDown = true;
+            this.dtpInicio.Size = new System.Drawing.Size(311, 22);
+            this.dtpInicio.TabIndex = 53;
+            this.dtpInicio.Value = new System.DateTime(2022, 6, 18, 0, 0, 0, 0);
+            // 
+            // dtpFin
+            // 
+            this.dtpFin.CustomFormat = "MMMM-dd-yyyy hh:mm:ss";
+            this.dtpFin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFin.Location = new System.Drawing.Point(551, 250);
+            this.dtpFin.MaxDate = new System.DateTime(2030, 12, 31, 0, 0, 0, 0);
+            this.dtpFin.MinDate = new System.DateTime(2019, 12, 31, 0, 0, 0, 0);
+            this.dtpFin.Name = "dtpFin";
+            this.dtpFin.ShowUpDown = true;
+            this.dtpFin.Size = new System.Drawing.Size(311, 22);
+            this.dtpFin.TabIndex = 54;
+            this.dtpFin.Value = new System.DateTime(2022, 6, 17, 0, 0, 0, 0);
+            // 
             // Eventos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(939, 583);
+            this.Controls.Add(this.dtpFin);
+            this.Controls.Add(this.dtpInicio);
             this.Controls.Add(this.lblObjetivo);
             this.Controls.Add(this.txtObjetivo);
             this.Controls.Add(this.txtImagenEvento);
@@ -298,8 +311,6 @@ namespace FormPrincipal
             this.Controls.Add(this.lblasistenciasEvento);
             this.Controls.Add(this.lblFechHorInicioEven);
             this.Controls.Add(this.txtAsistenciasEvento);
-            this.Controls.Add(this.txtFechHorFinEvento);
-            this.Controls.Add(this.txtFechHorIniEvento);
             this.Controls.Add(this.txtTituloEvento);
             this.Controls.Add(this.lblTituloEvento);
             this.Controls.Add(this.dgvEventos);
@@ -313,6 +324,9 @@ namespace FormPrincipal
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.DateTimePicker dtpInicio;
+        private System.Windows.Forms.DateTimePicker dtpFin;
 
         private System.Windows.Forms.TextBox txtObjetivo;
         private System.Windows.Forms.Label lblObjetivo;
@@ -333,8 +347,6 @@ namespace FormPrincipal
         private System.Windows.Forms.Label lbl;
         private System.Windows.Forms.Label lblNombreEvento;
         private System.Windows.Forms.TextBox txtTituloEvento;
-        private System.Windows.Forms.TextBox txtFechHorIniEvento;
-        private System.Windows.Forms.TextBox txtFechHorFinEvento;
         private System.Windows.Forms.TextBox txtAsistenciasEvento;
         private System.Windows.Forms.Label lblasistenciasEvento;
         private System.Windows.Forms.Label lblFechHorFin;

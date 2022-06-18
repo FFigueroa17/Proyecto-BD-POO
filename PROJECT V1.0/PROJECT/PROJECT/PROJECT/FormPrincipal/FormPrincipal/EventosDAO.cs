@@ -56,9 +56,9 @@ namespace FormPrincipal
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@titulo", eve.titulo);
                 command.Parameters.AddWithValue("@imagen", eve.imagen); 
-                command.Parameters.AddWithValue("@fecha_hora_inicio", eve.fechaIni);
+                command.Parameters.AddWithValue("@fecha_hora_inicio", eve.fechInicio);
                 command.Parameters.AddWithValue("@cantidad_asistencias", eve.asistencias);
-                command.Parameters.AddWithValue("@fecha_hora_fin", eve.fechaFin);
+                command.Parameters.AddWithValue("@fecha_hora_fin", eve.fechFin);
                 command.Parameters.AddWithValue("@id_area", eve.idareaeve);
                 //falta agregar el objetivo a su tabla
                 
@@ -117,13 +117,13 @@ namespace FormPrincipal
             return aidi;
         }
             
-        /*public static bool EliminarPorID(int ID) 
+        public static bool EliminarPorID(int ID) 
         { 
             bool exito = true; 
             try { 
                 string cadena = Resources.cadena_conexion; 
                 using (SqlConnection connection = new SqlConnection(cadena)){ 
-                    string query = "DELETE FROM COLECCION WHERE id_coleccion = @id"; 
+                    string query = "DELETE FROM EVENTO " + "WHERE id_evento = @id"; 
                     SqlCommand command = new SqlCommand(query, connection); 
                     command.Parameters.AddWithValue("@id", ID);
                     
@@ -137,7 +137,7 @@ namespace FormPrincipal
             } 
             return exito;
         } 
-            
+        /*    
         public static bool ActualizarPorID(Coleccion col) { 
             bool exito = true; 
             try { 
@@ -193,15 +193,18 @@ namespace FormPrincipal
         public static bool VerificarDisponibilidadFechas(Evento uwu)
         {
             bool verify = false, alguna = false, todos1 = true, todos2 = true;
-            DateTime fechini = Convert.ToDateTime(uwu.fechInicio);
-            DateTime fechfin = Convert.ToDateTime(uwu.fechFin);
+            DateTime fechini = uwu.fechInicio;
+            DateTime fechfin = uwu.fechFin;
             int idarea = uwu.idareaeve;
+            List<Evento> lista = ObtenerFechas();
 
             try
             {
-                foreach (var evento in ObtenerFechas())
+                foreach (var evento in lista)//NO ENTRA AQUI, POR?
                 {
-                    if ((fechini > evento.fechFin && fechfin < evento.fechInicio) && idarea == evento.idareaeve)
+                    MessageBox.Show("entra for each ", "a", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    if ((DateTime.Compare(fechini, evento.fechFin) > 0 
+                         && DateTime.Compare(fechfin, evento.fechInicio) < 0) && idarea == evento.idareaeve)
                     {
                         MessageBox.Show("entra primr cond", "a", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         alguna = true;
@@ -210,14 +213,16 @@ namespace FormPrincipal
                     }
                     else
                     {
-                        if ((fechini < evento.fechFin && fechini < evento.fechInicio) && idarea == evento.idareaeve)//todos1
+                        if ((DateTime.Compare(fechini, evento.fechFin) < 0 
+                             && DateTime.Compare(fechfin, evento.fechInicio) < 0) && idarea == evento.idareaeve)//todos1
                         {
                             MessageBox.Show("entra segunda cond", "a", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                             todos2 = false;
                         }
                         else
                         {
-                            if ((fechini > evento.fechFin && fechfin > evento.fechInicio) && idarea == evento.idareaeve)//todos2
+                            if ((DateTime.Compare(fechini, evento.fechFin) > 0 
+                                 && DateTime.Compare(fechfin, evento.fechInicio) > 0) && idarea == evento.idareaeve)//todos2
                             {
                                 MessageBox.Show("entra a tercera", "a", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                                 todos1 = false;
@@ -252,9 +257,10 @@ namespace FormPrincipal
                 string cadena = Resources.cadena_conexion;
                 List<Evento> lista = new List<Evento>();
 
+                MessageBox.Show("entra antes de la conexion", "a", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 using (SqlConnection connection = new SqlConnection(cadena)){
                     string query =
-                        "SELECT fecha_hora_inicio, fecha_hora_fin, AREA.id_area" +
+                        "SELECT fecha_hora_inicio, fecha_hora_fin, AREA.id_area " +
                         "FROM EVENTO, AREA " +
                         "WHERE EVENTO.id_area = AREA.id_area " +
                         "ORDER BY fecha_hora_inicio ASC";
@@ -265,7 +271,7 @@ namespace FormPrincipal
                         while (reader.Read())
                         {
                             Evento eve = new Evento();
-                            eve.idareaeve = Convert.ToInt32(reader["AREA.id_area"].ToString());
+                            eve.idareaeve = Convert.ToInt32(reader["id_area"].ToString());
                             eve.fechInicio = Convert.ToDateTime(reader["fecha_hora_inicio"].ToString());
                             eve.fechFin = Convert.ToDateTime(reader["fecha_hora_fin"].ToString());
                             lista.Add(eve);
@@ -273,6 +279,7 @@ namespace FormPrincipal
                     }
                     connection.Close();
                 }
+                
                 return lista;
         }
     }
