@@ -114,12 +114,15 @@
         <Compile Include="Reservas.Designer.cs">
           <DependentUpon>Reservas.cs</DependentUpon>
         </Compile>
+        <Compile Include="Usuario.cs" />
         <Compile Include="Usuarios.cs">
           <SubType>Form</SubType>
         </Compile>
         <Compile Include="Usuarios.Designer.cs">
           <DependentUpon>Usuarios.cs</DependentUpon>
         </Compile>
+        <Compile Include="UsuariosDAO.cs" />
+        <Compile Include="UsuarioShow.cs" />
         <EmbeddedResource Include="Areas.resx">
           <DependentUpon>Areas.cs</DependentUpon>
         </EmbeddedResource>
