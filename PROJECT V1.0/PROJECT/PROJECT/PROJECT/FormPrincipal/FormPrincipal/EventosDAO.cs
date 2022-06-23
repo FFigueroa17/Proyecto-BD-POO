@@ -244,7 +244,7 @@ namespace FormPrincipal
 
             try
             {
-                foreach (var evento in lista)
+                /*foreach (var evento in lista)
                 {
                     if ((DateTime.Compare(fechini, evento.fechFin) > 0 
                          && DateTime.Compare(fechfin, evento.fechInicio) < 0) && idarea == evento.idareaeve)
@@ -298,7 +298,66 @@ namespace FormPrincipal
                 }else if (loops == 0)
                 {
                     verify = true;
+                }*/
+                //----PRUEBA DE VERIFICACION DE FECHAS CON BUCLE FOR-----------------
+                int lis = lista.Count;//contar elementos de la lista
+                //for(int i = 1; i <= lis; i++)
+                for(int i = 1; i <= lis; i++)
+                {
+                    if ((DateTime.Compare(fechini, lista[i].fechFin/*evento.fechFin*/) > 0 
+                         && DateTime.Compare(fechfin, lista[i+1].fechInicio) < 0) && idarea == lista[i].idareaeve)
+                    {
+                        alguna = true;
+                        todos1 = false;
+                        todos2 = false;
+                    }
+                    else
+                    {
+                        if ((DateTime.Compare(fechini, lista[i].fechFin) < 0 
+                             && DateTime.Compare(fechfin, lista[i].fechInicio) < 0) && idarea == lista[i].idareaeve)//todos1
+                        {
+                            //todos2 = false;
+                            contsameareamin++;
+                        }
+                        else
+                        {
+                            if ((DateTime.Compare(fechini, lista[i].fechFin) > 0 
+                                 && DateTime.Compare(fechfin, lista[i].fechInicio) > 0) && idarea == lista[i].idareaeve)//todos2
+                            {
+                                contsameareamay++;
+                                //todos1 = false;
+                            }
+                            else
+                            {
+                                if (idarea != lista[i].idareaeve)
+                                {
+                                    contareasdif++;
+                                }
+                                else
+                                {
+                                    todos1 = false;
+                                    todos2 = false;
+                                    alguna = false;   
+                                }
+                            }
+                        }
+                    }
+                    //contador
+                    loops++;//calcula la cantidad de datos/veces q se ha recorrido el bucle
                 }
+
+                loops = loops - contareasdif;//veces recorrido - veces q se comparo con un area diferente
+                if (loops == contsameareamin)
+                {
+                    todos2 = false;
+                }else if (loops == contsameareamay)
+                {
+                    todos1 = false;
+                }else if (loops == 0)
+                {
+                    verify = true;
+                }
+                //---TERMINA PRUEBAAA-------------------------------
             }
             catch (Exception e)
             {

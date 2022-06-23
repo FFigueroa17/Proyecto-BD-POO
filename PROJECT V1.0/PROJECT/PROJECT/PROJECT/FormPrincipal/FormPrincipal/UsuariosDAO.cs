@@ -29,10 +29,10 @@ namespace FormPrincipal
                         UsuarioShow user = new UsuarioShow();
                         user.id_user = Convert.ToInt32(reader["id_usuario"].ToString());
                         user.nombreUser = reader["nombre"].ToString();
-                        user.area = reader["nombre"].ToString();
+                        user.area = reader["nombre"].ToString();//VERIFICAAAAAAAAAAAAAAAAAAAAAAAAR
                         user.fotografiauser = reader["fotografia"].ToString();
-                        user.Fecha_hora_entrada = Convert.ToDateTime(reader["fecha_hora_entrada"].ToString());
-                        user.Fecha_hora_salida = Convert.ToDateTime(reader["fecha_hora_salida"].ToString());
+                        user.Fecha_hora_entrada = Convert.ToDateTime(reader["fecha_hora_entrada"]);
+                        user.Fecha_hora_salida = Convert.ToDateTime(reader["fecha_hora_salida"]);
                         lista.Add(user);
                     }   
                 }
@@ -42,6 +42,7 @@ namespace FormPrincipal
         }
         
         //--------OBTENER COMBOBOXES---------------
+        //pd: utiliza la clase Evento, se reutilizo el combobox creado en "EventosDAO" ya que es el mismo pero sin limites
         public static List<Evento> ObtenerCombobox(){
             string cadena = Resources.cadena_conexion;
             List<Evento> lista = new List<Evento>();
@@ -77,7 +78,7 @@ namespace FormPrincipal
             {
                 string query =
                     "INSERT INTO INGRESA(fecha_hora_entrada, fecha_hora_salida, id_usuario, id_area) " +
-                    "VALUES(@fecha_hora_entrada, NULL, @id_usuario, @id_area)";
+                    "VALUES(@fecha_hora_entrada, '1999-12-31 23:59:00.000', @id_usuario, @id_area)";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@fecha_hora_entrada", user.fecha_hora_entrada);
                 command.Parameters.AddWithValue("@id_usuario", user.id_user); 
@@ -98,7 +99,7 @@ namespace FormPrincipal
             {
                 string query =
                     "UPDATE INGRESA SET fecha_hora_salida = @fecha_hora_salida " +
-                    "WHERE fecha_hora_salida = NULL AND id_usuario = @id_usuario AND id_area = @id_area";
+                    "WHERE fecha_hora_salida = '1999-12-31 23:59:00.000' AND id_usuario = @id_usuario AND id_area = @id_area";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@fecha_hora_salida", user.fecha_hora_salida);
                 command.Parameters.AddWithValue("@id_usuario", user.id_user); 

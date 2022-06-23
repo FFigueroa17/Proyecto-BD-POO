@@ -11,6 +11,28 @@ namespace FormPrincipal
         {
             InitializeComponent();
         }
+        //-----SECCION DE LIMPIEZA DE DATOS-----------------
+        public void LimpiarIngreso()//agregar campos faltantes
+        {
+            txtIdingreso.Clear();
+        }
+        
+        public void LimpiarSalida()//agregar campos faltantes
+        {
+            txtidsalida.Clear();
+        }
+        
+        public void LimpiarAgregarUsuario()//agregar campos faltantes
+        {
+            txtNombreNuevoUsuario.Clear();
+            txtCorreoUsuario.Clear();
+            txtDireccionUsuario.Clear();
+            txtInstitucionUsuario.Clear();
+            txtTelefonoUsuario.Clear();
+            txtOcupacionUsuario.Clear();
+            txtFotoUsuario.Clear();
+        }
+
 
         private void Usuarios_Load(object sender, EventArgs e)
         {
@@ -65,6 +87,7 @@ namespace FormPrincipal
                 //---MOSTRAR USUARIOS----
                 dgvIngresoSalidaUsuarios.DataSource = null;
                 dgvIngresoSalidaUsuarios.DataSource = UsuariosDAO.ObtenerTodos();
+                LimpiarIngreso();
             }
         }
         
@@ -85,6 +108,7 @@ namespace FormPrincipal
                 //---MOSTRAR USUARIOS----
                 dgvIngresoSalidaUsuarios.DataSource = null;
                 dgvIngresoSalidaUsuarios.DataSource = UsuariosDAO.ObtenerTodos();
+                LimpiarSalida();
             }
         }
         //---------
@@ -107,12 +131,13 @@ namespace FormPrincipal
             //---MOSTRAR USUARIOS----
             dgvIngresoSalidaUsuarios.DataSource = null;
             dgvIngresoSalidaUsuarios.DataSource = UsuariosDAO.ObtenerTodos();
+            LimpiarAgregarUsuario();
         }
 
         //-----CAMBIAR DE PESTAÑA-------------------------------
         private void btnCambiarPestaña_Click(object sender, EventArgs e)
         {
-            
+            //ver q ondas
         }
     }
 }
