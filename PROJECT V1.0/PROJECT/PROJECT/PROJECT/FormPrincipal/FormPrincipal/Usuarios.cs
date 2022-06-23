@@ -44,6 +44,9 @@ namespace FormPrincipal
             //---MOSTRAR USUARIOS----
             dgvIngresoSalidaUsuarios.DataSource = null;
             dgvIngresoSalidaUsuarios.DataSource = UsuariosDAO.ObtenerTodos();
+            DataGridViewImageColumn columna = (DataGridViewImageColumn)dgvIngresoSalidaUsuarios.Columns["imagenuser"];
+            columna.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            dgvIngresoSalidaUsuarios.Columns["fotografiauser"].Visible = false;
             
             //AGREGAR VALORES AL COMBO BOX
             DataTable areas = new DataTable("Areas");
@@ -121,7 +124,7 @@ namespace FormPrincipal
             user.direccionuser = txtDireccionUsuario.Text;
             user.correouser = txtCorreoUsuario.Text;
             user.institucionuser = txtInstitucionUsuario.Text;
-            user.fotografiauser = txtFotoUsuario.Text;//imageeeeeeeeeeeeeeeeeeeeen
+            user.fotografiauser = imagen;   //imageeeeeeeeeeeeeeeeeeeeen
             user.telefonouser = txtTelefonoUsuario.Text;
             
             UsuariosDAO.CrearNuevoUsuario(user);
@@ -138,6 +141,30 @@ namespace FormPrincipal
         private void btnCambiarPestaña_Click(object sender, EventArgs e)
         {
             //ver q ondas
+            tbcUsuarios.SelectedIndex = 1;
+        }
+
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            tbcUsuarios.SelectedIndex = 0;
+        }
+
+        //-----BOTON AGREGAR IMAGEN
+        public string imagen;
+        private void btnAgregarfotoUser_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog getImage = new OpenFileDialog();
+            getImage.InitialDirectory = "C:\\";
+            getImage.Filter = "Image Files(.jpg; *.jpeg; *.gif; *.bmp)|.jpg; *.jpeg; *.gif; *.bmp";
+
+            if (getImage.ShowDialog() == DialogResult.OK)
+            {
+                imagen = getImage.FileName;
+            }
+            else
+            {
+                MessageBox.Show("No selecciono ninguna imagen");
+            }
         }
     }
 }

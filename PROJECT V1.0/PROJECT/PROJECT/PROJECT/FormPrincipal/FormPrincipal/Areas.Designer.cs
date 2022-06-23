@@ -37,19 +37,20 @@ namespace FormPrincipal
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Century Gothic", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label1.Location = new System.Drawing.Point(284, 184);
+            this.label1.Location = new System.Drawing.Point(252, 147);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(232, 83);
+            this.label1.Size = new System.Drawing.Size(206, 66);
             this.label1.TabIndex = 2;
             this.label1.Text = "AREAS";
             // 
             // Areas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(711, 360);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Areas";
             this.Text = "Areas";
             this.ResumeLayout(false);

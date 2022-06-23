@@ -49,6 +49,8 @@ namespace FormPrincipal
             this.lblSalida = new System.Windows.Forms.Label();
             this.lblIngreso = new System.Windows.Forms.Label();
             this.tbpRegistrarUsuario = new System.Windows.Forms.TabPage();
+            this.btnAgregarfotoUser = new System.Windows.Forms.Button();
+            this.btnRegresar = new System.Windows.Forms.Button();
             this.btnAgregarUser = new System.Windows.Forms.Button();
             this.txtFotoUsuario = new System.Windows.Forms.TextBox();
             this.txtTelefonoUsuario = new System.Windows.Forms.TextBox();
@@ -235,6 +237,8 @@ namespace FormPrincipal
             // tbpRegistrarUsuario
             // 
             this.tbpRegistrarUsuario.BackColor = System.Drawing.SystemColors.Control;
+            this.tbpRegistrarUsuario.Controls.Add(this.btnAgregarfotoUser);
+            this.tbpRegistrarUsuario.Controls.Add(this.btnRegresar);
             this.tbpRegistrarUsuario.Controls.Add(this.btnAgregarUser);
             this.tbpRegistrarUsuario.Controls.Add(this.txtFotoUsuario);
             this.tbpRegistrarUsuario.Controls.Add(this.txtTelefonoUsuario);
@@ -257,6 +261,26 @@ namespace FormPrincipal
             this.tbpRegistrarUsuario.Size = new System.Drawing.Size(926, 497);
             this.tbpRegistrarUsuario.TabIndex = 1;
             this.tbpRegistrarUsuario.Text = "tabPage2";
+            // 
+            // btnAgregarfotoUser
+            // 
+            this.btnAgregarfotoUser.Location = new System.Drawing.Point(605, 109);
+            this.btnAgregarfotoUser.Name = "btnAgregarfotoUser";
+            this.btnAgregarfotoUser.Size = new System.Drawing.Size(222, 56);
+            this.btnAgregarfotoUser.TabIndex = 17;
+            this.btnAgregarfotoUser.Text = "Agregar imagen";
+            this.btnAgregarfotoUser.UseVisualStyleBackColor = true;
+            this.btnAgregarfotoUser.Click += new System.EventHandler(this.btnAgregarfotoUser_Click);
+            // 
+            // btnRegresar
+            // 
+            this.btnRegresar.Location = new System.Drawing.Point(24, 415);
+            this.btnRegresar.Name = "btnRegresar";
+            this.btnRegresar.Size = new System.Drawing.Size(132, 46);
+            this.btnRegresar.TabIndex = 16;
+            this.btnRegresar.Text = "Regresar";
+            this.btnRegresar.UseVisualStyleBackColor = true;
+            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
             // btnAgregarUser
             // 
@@ -402,6 +426,10 @@ namespace FormPrincipal
             this.tbpRegistrarUsuario.PerformLayout();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Button btnAgregarfotoUser;
+
+        private System.Windows.Forms.Button btnRegresar;
 
         private System.Windows.Forms.Button btnAgregarUser;
 

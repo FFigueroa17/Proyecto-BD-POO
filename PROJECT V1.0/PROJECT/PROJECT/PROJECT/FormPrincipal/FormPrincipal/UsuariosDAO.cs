@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.Runtime.CompilerServices;
 using FormPrincipal.Properties;
 
 namespace FormPrincipal
@@ -13,13 +15,13 @@ namespace FormPrincipal
             List<UsuarioShow> lista = new List<UsuarioShow>();
 
             using (SqlConnection connection = new SqlConnection(cadena)){
-                string query = "SELECT USUARIO.id_usuario, USUARIO.nombre, USUARIO.fotografia, AREA.nombre, " +
-                               "INGRESA.fecha_hora_entrada, INGRESA.fecha_hora_salida " +
-                               "FROM USUARIO " +
-                               "INNER JOIN INGRESA " +
-                               "ON USUARIO.id_usuario = INGRESA.id_usuario " +
-                               "INNER JOIN AREA " +
-                               "ON AREA.id_area = INGRESA.id_area";
+                string query = "SELECT USUARIO.id_usuario, USUARIO.nombre AS 'Usuario', USUARIO.fotografia, AREA.nombre AS 'Area', " +
+                               " INGRESA.fecha_hora_entrada, INGRESA.fecha_hora_salida " +
+                               " FROM USUARIO " +
+                               " INNER JOIN INGRESA " +
+                               " ON USUARIO.id_usuario = INGRESA.id_usuario " +
+                               " INNER JOIN AREA " +
+                               " ON AREA.id_area = INGRESA.id_area";
                 SqlCommand command = new SqlCommand(query, connection);
                 
                 connection.Open();
@@ -28,9 +30,10 @@ namespace FormPrincipal
                     {
                         UsuarioShow user = new UsuarioShow();
                         user.id_user = Convert.ToInt32(reader["id_usuario"].ToString());
-                        user.nombreUser = reader["nombre"].ToString();
-                        user.area = reader["nombre"].ToString();//VERIFICAAAAAAAAAAAAAAAAAAAAAAAAR
+                        user.nombreUser = reader["Usuario"].ToString();
+                        user.area = reader["Area"].ToString();
                         user.fotografiauser = reader["fotografia"].ToString();
+                        user.imagenuser = UsuariosDAO.obtenerImagen(user.fotografiauser);
                         user.Fecha_hora_entrada = Convert.ToDateTime(reader["fecha_hora_entrada"]);
                         user.Fecha_hora_salida = Convert.ToDateTime(reader["fecha_hora_salida"]);
                         lista.Add(user);
@@ -39,6 +42,15 @@ namespace FormPrincipal
                 connection.Close();
             }
             return lista;
+        }
+        
+        //FUNCION PARA OBTENER IMAGEN--------------------
+        public static Bitmap obtenerImagen(string ruta)
+        {
+            Bitmap fotico = null;
+            fotico = new Bitmap(ruta);
+
+            return fotico;
         }
         
         //--------OBTENER COMBOBOXES---------------
