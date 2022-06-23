@@ -300,8 +300,9 @@ namespace FormPrincipal
                     verify = true;
                 }*/
                 //----PRUEBA DE VERIFICACION DE FECHAS CON BUCLE FOR-----------------
+                
                 int lis = lista.Count;//contar elementos de la lista
-                //for(int i = 1; i <= lis; i++)
+                
                 for(int i = 1; i <= lis; i++)
                 {
                     if ((DateTime.Compare(fechini, lista[i].fechFin/*evento.fechFin*/) > 0 
