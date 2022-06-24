@@ -48,11 +48,11 @@ namespace FormPrincipal
             this.cmbAreaEvento = new System.Windows.Forms.ComboBox();
             this.lblIDElimiEditEvento = new System.Windows.Forms.Label();
             this.txtIDElimEditEvento = new System.Windows.Forms.TextBox();
-            this.txtImagenEvento = new System.Windows.Forms.TextBox();
             this.txtObjetivo = new System.Windows.Forms.TextBox();
             this.lblObjetivo = new System.Windows.Forms.Label();
             this.dtpInicio = new System.Windows.Forms.DateTimePicker();
             this.dtpFin = new System.Windows.Forms.DateTimePicker();
+            this.btnAgregarImagen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize) (this.dgvEventos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -203,7 +203,7 @@ namespace FormPrincipal
             // 
             // lblImagenEvento
             // 
-            this.lblImagenEvento.Location = new System.Drawing.Point(552, 414);
+            this.lblImagenEvento.Location = new System.Drawing.Point(551, 406);
             this.lblImagenEvento.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblImagenEvento.Name = "lblImagenEvento";
             this.lblImagenEvento.Size = new System.Drawing.Size(324, 22);
@@ -234,14 +234,6 @@ namespace FormPrincipal
             this.txtIDElimEditEvento.Name = "txtIDElimEditEvento";
             this.txtIDElimEditEvento.Size = new System.Drawing.Size(195, 22);
             this.txtIDElimEditEvento.TabIndex = 49;
-            // 
-            // txtImagenEvento
-            // 
-            this.txtImagenEvento.Location = new System.Drawing.Point(551, 440);
-            this.txtImagenEvento.Margin = new System.Windows.Forms.Padding(4);
-            this.txtImagenEvento.Name = "txtImagenEvento";
-            this.txtImagenEvento.Size = new System.Drawing.Size(311, 22);
-            this.txtImagenEvento.TabIndex = 50;
             // 
             // txtObjetivo
             // 
@@ -287,17 +279,33 @@ namespace FormPrincipal
             this.dtpFin.TabIndex = 54;
             this.dtpFin.Value = new System.DateTime(2022, 1, 1, 0, 0, 0, 0);
             // 
+            // btnAgregarImagen
+            // 
+            this.btnAgregarImagen.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (19)))), ((int) (((byte) (15)))), ((int) (((byte) (64)))));
+            this.btnAgregarImagen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAgregarImagen.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAgregarImagen.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.btnAgregarImagen.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnAgregarImagen.Location = new System.Drawing.Point(551, 431);
+            this.btnAgregarImagen.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAgregarImagen.Name = "btnAgregarImagen";
+            this.btnAgregarImagen.Size = new System.Drawing.Size(311, 36);
+            this.btnAgregarImagen.TabIndex = 55;
+            this.btnAgregarImagen.Text = "Agregar imagen";
+            this.btnAgregarImagen.UseVisualStyleBackColor = false;
+            this.btnAgregarImagen.Click += new System.EventHandler(this.btnAgregarImagen_Click);
+            // 
             // Eventos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(939, 583);
+            this.Controls.Add(this.btnAgregarImagen);
             this.Controls.Add(this.dtpFin);
             this.Controls.Add(this.dtpInicio);
             this.Controls.Add(this.lblObjetivo);
             this.Controls.Add(this.txtObjetivo);
-            this.Controls.Add(this.txtImagenEvento);
             this.Controls.Add(this.txtIDElimEditEvento);
             this.Controls.Add(this.lblIDElimiEditEvento);
             this.Controls.Add(this.cmbAreaEvento);
@@ -325,13 +333,13 @@ namespace FormPrincipal
             this.PerformLayout();
         }
 
+        private System.Windows.Forms.Button btnAgregarImagen;
+
         private System.Windows.Forms.DateTimePicker dtpInicio;
         private System.Windows.Forms.DateTimePicker dtpFin;
 
         private System.Windows.Forms.TextBox txtObjetivo;
         private System.Windows.Forms.Label lblObjetivo;
-
-        private System.Windows.Forms.TextBox txtImagenEvento;
 
         private System.Windows.Forms.TextBox txtIDElimEditEvento;
 

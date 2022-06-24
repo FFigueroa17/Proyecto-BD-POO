@@ -1,4 +1,6 @@
-﻿namespace FormPrincipal
+﻿using System.Drawing;
+
+namespace FormPrincipal
 {
     public class Evento2
     {
@@ -11,6 +13,7 @@
         public string fechaFin { get; set; }
         public int asistencias { get; set; }
         public string areaEvento { get; set; }
+        public Bitmap imagenevento { get; set; }
 
         public Evento2()
         {
@@ -22,9 +25,10 @@
             this.fechaFin = "";
             this.asistencias = 0;
             this.areaEvento = "";
+            this.imagenevento = null;
         }
 
-        public Evento2(int id, string title, string obj, string image, string ini, string fin, int asis, string even)
+        public Evento2(int id, string title, string obj, string image, string ini, string fin, int asis, string even, Bitmap pic)
         {
             this.IdEvento = id;
             this.titulo = title;
@@ -34,6 +38,8 @@
             this.fechaFin = fin;
             this.asistencias = asis;
             this.areaEvento = even;
+            this.imagenevento = pic;
+
         }
     }
 }

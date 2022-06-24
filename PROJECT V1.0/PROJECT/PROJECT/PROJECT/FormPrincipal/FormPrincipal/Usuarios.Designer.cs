@@ -52,7 +52,6 @@ namespace FormPrincipal
             this.btnAgregarfotoUser = new System.Windows.Forms.Button();
             this.btnRegresar = new System.Windows.Forms.Button();
             this.btnAgregarUser = new System.Windows.Forms.Button();
-            this.txtFotoUsuario = new System.Windows.Forms.TextBox();
             this.txtTelefonoUsuario = new System.Windows.Forms.TextBox();
             this.txtInstitucionUsuario = new System.Windows.Forms.TextBox();
             this.txtCorreoUsuario = new System.Windows.Forms.TextBox();
@@ -240,7 +239,6 @@ namespace FormPrincipal
             this.tbpRegistrarUsuario.Controls.Add(this.btnAgregarfotoUser);
             this.tbpRegistrarUsuario.Controls.Add(this.btnRegresar);
             this.tbpRegistrarUsuario.Controls.Add(this.btnAgregarUser);
-            this.tbpRegistrarUsuario.Controls.Add(this.txtFotoUsuario);
             this.tbpRegistrarUsuario.Controls.Add(this.txtTelefonoUsuario);
             this.tbpRegistrarUsuario.Controls.Add(this.txtInstitucionUsuario);
             this.tbpRegistrarUsuario.Controls.Add(this.txtCorreoUsuario);
@@ -264,7 +262,7 @@ namespace FormPrincipal
             // 
             // btnAgregarfotoUser
             // 
-            this.btnAgregarfotoUser.Location = new System.Drawing.Point(605, 109);
+            this.btnAgregarfotoUser.Location = new System.Drawing.Point(601, 80);
             this.btnAgregarfotoUser.Name = "btnAgregarfotoUser";
             this.btnAgregarfotoUser.Size = new System.Drawing.Size(222, 56);
             this.btnAgregarfotoUser.TabIndex = 17;
@@ -291,13 +289,6 @@ namespace FormPrincipal
             this.btnAgregarUser.Text = "Agregar";
             this.btnAgregarUser.UseVisualStyleBackColor = true;
             this.btnAgregarUser.Click += new System.EventHandler(this.btnAgregarUser_Click);
-            // 
-            // txtFotoUsuario
-            // 
-            this.txtFotoUsuario.Location = new System.Drawing.Point(601, 80);
-            this.txtFotoUsuario.Name = "txtFotoUsuario";
-            this.txtFotoUsuario.Size = new System.Drawing.Size(227, 22);
-            this.txtFotoUsuario.TabIndex = 14;
             // 
             // txtTelefonoUsuario
             // 
@@ -441,7 +432,6 @@ namespace FormPrincipal
         private System.Windows.Forms.TextBox txtCorreoUsuario;
         private System.Windows.Forms.TextBox txtInstitucionUsuario;
         private System.Windows.Forms.TextBox txtTelefonoUsuario;
-        private System.Windows.Forms.TextBox txtFotoUsuario;
 
         private System.Windows.Forms.Label lblNombreIng;
         private System.Windows.Forms.Label label2;

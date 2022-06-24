@@ -30,7 +30,6 @@ namespace FormPrincipal
             txtInstitucionUsuario.Clear();
             txtTelefonoUsuario.Clear();
             txtOcupacionUsuario.Clear();
-            txtFotoUsuario.Clear();
         }
 
 

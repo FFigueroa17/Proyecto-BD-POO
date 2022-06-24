@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Security.AccessControl;
 using System.Windows.Forms;
 using FormPrincipal.Properties;
@@ -39,12 +40,22 @@ namespace FormPrincipal
                             eve.fechaFin = reader["fecha_hora_fin"].ToString();
                             eve.asistencias = Convert.ToInt32(reader["cantidad_asistencias"].ToString());
                             eve.areaEvento = reader["nombre"].ToString();
+                            eve.imagenevento = obtenerImagen(eve.imagen);
                             lista.Add(eve);
                         }   
                     }
                     connection.Close();
                 }
                 return lista;
+        }
+        
+        //FUNCION PARA OBTENER IMAGEN--------------------
+        public static Bitmap obtenerImagen(string ruta)
+        {
+            Bitmap fotico = null;
+            fotico = new Bitmap(ruta);
+
+            return fotico;
         }
         
         //--------FUNCION PARA AGREGAR NUEVO EVENTO----------------------------------------------------------------
