@@ -28,10 +28,7 @@ namespace FormPrincipal
             string count = "";
 
             using (SqlConnection connection = new SqlConnection(cadena)){
-               //string query = "select count(*) 'Conteo' from PRESTAMO WHERE id_ejemplar = '" +id + "' AND fecha_hora_prestamo BETWEEN CONVERT(datetime,'" +prueba1+ "',103) AND CONVERT(datetime,'" + prueba2 + "',103)";
-               //string query = "select count(*) 'Conteo' from PRESTAMO WHERE id_ejemplar = '" +id + "' AND CONVERT(datetime,'" +prueba1+ "',103) > fecha_hora_devolucion"; 
-               //string query = "select count(*) 'Conteo' from PRESTAMO WHERE id_ejemplar = '" +id + "' AND CONVERT(datetime,'" +prueba1+ "',103) > fecha_hora_devolucion AND fecha_hora_prestamo < CONVERT(datetime,'" + prueba2 + "',103)";
-               string query = "select count(*) 'Conteo' from PRESTAMO WHERE id_ejemplar = '" +id + "' AND CONVERT(datetime,'" +prueba1+ "',103) BETWEEN fecha_hora_prestamo AND fecha_hora_devolucion";
+                string query = "select count(*) 'Conteo' from PRESTAMO WHERE id_ejemplar = '" +id + "' AND CONVERT(datetime,'" +prueba1+ "',103) >= fecha_hora_prestamo AND CONVERT(datetime,'" +prueba1+ "',103) <= fecha_hora_devolucion";
                
                 SqlCommand command = new SqlCommand(query, connection);
 

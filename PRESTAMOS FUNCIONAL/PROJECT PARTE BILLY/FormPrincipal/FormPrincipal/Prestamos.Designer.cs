@@ -257,7 +257,7 @@ namespace FormPrincipal
             this.lblPrueba2.Text = "lblGhost2";
             this.lblPrueba2.Visible = false;
             // 
-            // Prestamos
+            // frmPrestamos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -286,7 +286,7 @@ namespace FormPrincipal
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Location = new System.Drawing.Point(15, 15);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "Prestamos";
+            this.Name = "frmPrestamos";
             ((System.ComponentModel.ISupportInitialize) (this.dgvPrestamos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
