@@ -223,6 +223,9 @@ namespace FormPrincipal
             
             if (e.RowIndex != -1)
             {
+                //Limpiar ID
+                txtIDEjemplarAC.Text = "";
+                txtIDejemplar.Text = "";
                 //Obtener el libro seleccionado
                 EjemplarConsulta ej = dgvEjemplares.SelectedRows[0].DataBoundItem as EjemplarConsulta;
 

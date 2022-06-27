@@ -89,7 +89,7 @@ namespace FormPrincipal
                 int idIdioma = 0;
                 
                 using (SqlConnection connection = new SqlConnection(cadena)){
-                    string query = "SELECT EJ.id_idioma, IDI.idioma " + " FROM EJEMPLAR EJ INNER JOIN IDIOMA IDI ON EJ.id_idioma = IDI.id_idioma" + " WHERE IDI.idioma = @nombreIidioma";
+                    string query = "SELECT IDI.id_idioma, IDI.idioma FROM IDIOMA IDI WHERE IDI.idioma = @nombreIidioma";
                     SqlCommand command = new SqlCommand(query, connection);
                     command.Parameters.AddWithValue("@nombreIidioma", nombreIidioma);
                     
@@ -112,7 +112,7 @@ namespace FormPrincipal
                 int idColeccion = 0; 
                 
                 using (SqlConnection connection = new SqlConnection(cadena)){
-                    string query = "SELECT EJ.id_coleccion, CO.nombre " + " FROM EJEMPLAR EJ INNER JOIN COLECCION CO ON EJ.id_coleccion = CO.id_coleccion" + " WHERE CO.nombre= @nombreColeccion";
+                    string query = "SELECT CO.id_coleccion, CO.nombre FROM COLECCION CO WHERE CO.nombre = @nombreColeccion";
                     SqlCommand command = new SqlCommand(query, connection);
                     command.Parameters.AddWithValue("@nombreColeccion", nombreColeccion);
                     
@@ -135,7 +135,7 @@ namespace FormPrincipal
                 int idEditorial = 0; 
                 
                 using (SqlConnection connection = new SqlConnection(cadena)){
-                    string query = "SELECT EJ.id_editorial, EDI.nomre_editorial " + " FROM EJEMPLAR EJ INNER JOIN EDITORIAL EDI ON EJ.id_editorial = EDI.id_editorial" + " WHERE EDI.nomre_editorial = @nombreEditorial";
+                    string query = "SELECT EDI.id_editorial, EDI.nomre_editorial FROM  EDITORIAL EDI WHERE EDI.nomre_editorial = @nombreEditorial";
                     SqlCommand command = new SqlCommand(query, connection);
                     command.Parameters.AddWithValue("@nombreEditorial", nombreEditorial);
                     

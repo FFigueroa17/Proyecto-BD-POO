@@ -147,6 +147,9 @@ namespace FormPrincipal
             {
                 if (e.RowIndex != -1)
                 {
+
+                    //Limpiar ID
+                    txtReservaMod.Text = "";
                     //Obtener el libro seleccionado
                     ReservaConsulta ej = dgvReservas.SelectedRows[0].DataBoundItem as ReservaConsulta;
 

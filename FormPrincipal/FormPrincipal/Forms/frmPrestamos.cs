@@ -201,6 +201,8 @@ namespace FormPrincipal
             {
                 if (e.RowIndex != -1)
                 {
+                    //Limpiar ID
+                    txtPrestamoMod.Text = "";
                     //Obtener el libro seleccionado
                     PrestamoConsulta ej = dgvPrestamos.SelectedRows[0].DataBoundItem as PrestamoConsulta;
 
