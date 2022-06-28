@@ -35,6 +35,7 @@
             this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.picBusquedas = new System.Windows.Forms.PictureBox();
             this.btnSalir = new System.Windows.Forms.PictureBox();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -57,16 +58,15 @@
             this.PanelContainer = new System.Windows.Forms.Panel();
             this.pbBinaes = new System.Windows.Forms.PictureBox();
             this.panel12 = new System.Windows.Forms.Panel();
-            this.picBusquedas = new System.Windows.Forms.PictureBox();
             this.ttpBusquedas = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBusquedas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSalir)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBinaes)).BeginInit();
             this.panel12.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picBusquedas)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -76,7 +76,7 @@
             this.panel1.Controls.Add(this.btnMinimizar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(863, 26);
             this.panel1.TabIndex = 1;
@@ -86,7 +86,7 @@
             this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
             this.btnCerrar.Location = new System.Drawing.Point(840, 3);
-            this.btnCerrar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCerrar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(15, 18);
             this.btnCerrar.TabIndex = 2;
@@ -98,7 +98,7 @@
             this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.Image")));
             this.btnMinimizar.Location = new System.Drawing.Point(815, 3);
-            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(2);
             this.btnMinimizar.Name = "btnMinimizar";
             this.btnMinimizar.Size = new System.Drawing.Size(21, 20);
             this.btnMinimizar.TabIndex = 0;
@@ -129,17 +129,30 @@
             this.panel2.Controls.Add(this.btnEventos);
             this.panel2.Controls.Add(this.btnColecciones);
             this.panel2.Location = new System.Drawing.Point(0, 101);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(157, 371);
             this.panel2.TabIndex = 2;
+            // 
+            // picBusquedas
+            // 
+            this.picBusquedas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picBusquedas.Image = ((System.Drawing.Image)(resources.GetObject("picBusquedas.Image")));
+            this.picBusquedas.Location = new System.Drawing.Point(98, 316);
+            this.picBusquedas.Margin = new System.Windows.Forms.Padding(2);
+            this.picBusquedas.Name = "picBusquedas";
+            this.picBusquedas.Size = new System.Drawing.Size(37, 36);
+            this.picBusquedas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picBusquedas.TabIndex = 25;
+            this.picBusquedas.TabStop = false;
+            this.picBusquedas.Click += new System.EventHandler(this.picBusquedas_Click);
             // 
             // btnSalir
             // 
             this.btnSalir.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSalir.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir.Image")));
             this.btnSalir.Location = new System.Drawing.Point(20, 316);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(2);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(38, 36);
             this.btnSalir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -151,7 +164,7 @@
             // 
             this.panel9.BackColor = System.Drawing.Color.DarkTurquoise;
             this.panel9.Location = new System.Drawing.Point(0, 188);
-            this.panel9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel9.Margin = new System.Windows.Forms.Padding(2);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(7, 35);
             this.panel9.TabIndex = 21;
@@ -160,7 +173,7 @@
             // 
             this.panel7.BackColor = System.Drawing.Color.DarkTurquoise;
             this.panel7.Location = new System.Drawing.Point(0, 125);
-            this.panel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel7.Margin = new System.Windows.Forms.Padding(2);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(7, 34);
             this.panel7.TabIndex = 19;
@@ -169,7 +182,7 @@
             // 
             this.panel10.BackColor = System.Drawing.Color.DarkTurquoise;
             this.panel10.Location = new System.Drawing.Point(0, 223);
-            this.panel10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel10.Margin = new System.Windows.Forms.Padding(2);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(7, 29);
             this.panel10.TabIndex = 22;
@@ -178,7 +191,7 @@
             // 
             this.panel8.BackColor = System.Drawing.Color.DarkTurquoise;
             this.panel8.Location = new System.Drawing.Point(0, 159);
-            this.panel8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel8.Margin = new System.Windows.Forms.Padding(2);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(7, 29);
             this.panel8.TabIndex = 20;
@@ -187,7 +200,7 @@
             // 
             this.panel11.BackColor = System.Drawing.Color.DarkTurquoise;
             this.panel11.Location = new System.Drawing.Point(0, 252);
-            this.panel11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel11.Margin = new System.Windows.Forms.Padding(2);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(7, 29);
             this.panel11.TabIndex = 23;
@@ -196,7 +209,7 @@
             // 
             this.panel6.BackColor = System.Drawing.Color.DarkTurquoise;
             this.panel6.Location = new System.Drawing.Point(0, 95);
-            this.panel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(7, 31);
             this.panel6.TabIndex = 18;
@@ -205,7 +218,7 @@
             // 
             this.panel5.BackColor = System.Drawing.Color.DarkTurquoise;
             this.panel5.Location = new System.Drawing.Point(0, 64);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(7, 31);
             this.panel5.TabIndex = 17;
@@ -214,7 +227,7 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.DarkTurquoise;
             this.panel4.Location = new System.Drawing.Point(0, 35);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(7, 32);
             this.panel4.TabIndex = 16;
@@ -223,7 +236,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.Orange;
             this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(7, 35);
             this.panel3.TabIndex = 15;
@@ -378,7 +391,7 @@
             // 
             this.PanelContainer.Dock = System.Windows.Forms.DockStyle.Right;
             this.PanelContainer.Location = new System.Drawing.Point(152, 26);
-            this.PanelContainer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PanelContainer.Margin = new System.Windows.Forms.Padding(2);
             this.PanelContainer.Name = "PanelContainer";
             this.PanelContainer.Size = new System.Drawing.Size(711, 474);
             this.PanelContainer.TabIndex = 3;
@@ -387,7 +400,7 @@
             // 
             this.pbBinaes.Image = ((System.Drawing.Image)(resources.GetObject("pbBinaes.Image")));
             this.pbBinaes.Location = new System.Drawing.Point(8, 10);
-            this.pbBinaes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbBinaes.Margin = new System.Windows.Forms.Padding(2);
             this.pbBinaes.Name = "pbBinaes";
             this.pbBinaes.Size = new System.Drawing.Size(140, 90);
             this.pbBinaes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -401,23 +414,10 @@
             this.panel12.Controls.Add(this.pbBinaes);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel12.Location = new System.Drawing.Point(0, 26);
-            this.panel12.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel12.Margin = new System.Windows.Forms.Padding(2);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(157, 474);
             this.panel12.TabIndex = 4;
-            // 
-            // picBusquedas
-            // 
-            this.picBusquedas.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picBusquedas.Image = ((System.Drawing.Image)(resources.GetObject("picBusquedas.Image")));
-            this.picBusquedas.Location = new System.Drawing.Point(98, 316);
-            this.picBusquedas.Margin = new System.Windows.Forms.Padding(2);
-            this.picBusquedas.Name = "picBusquedas";
-            this.picBusquedas.Size = new System.Drawing.Size(37, 36);
-            this.picBusquedas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picBusquedas.TabIndex = 25;
-            this.picBusquedas.TabStop = false;
-            this.picBusquedas.Click += new System.EventHandler(this.picBusquedas_Click);
             // 
             // ttpBusquedas
             // 
@@ -435,9 +435,10 @@
             this.Controls.Add(this.PanelContainer);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.ImeMode = System.Windows.Forms.ImeMode.On;
             this.Location = new System.Drawing.Point(15, 15);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -446,10 +447,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picBusquedas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSalir)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBinaes)).EndInit();
             this.panel12.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picBusquedas)).EndInit();
             this.ResumeLayout(false);
 
         }
